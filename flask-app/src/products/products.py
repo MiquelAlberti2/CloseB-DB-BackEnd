@@ -12,7 +12,7 @@ def get_products():
     cursor = db.get_db().cursor()
 
     # use cursor to query the database for a list of products
-    cursor.execute('SELECT id, product_code, product_name, list_price FROM products')
+    cursor.execute('SELECT ProductID, Name, Description, Price, BrandID FROM Products')
 
     # grab the column headers from the returned data
     column_headers = [x[0] for x in cursor.description]
