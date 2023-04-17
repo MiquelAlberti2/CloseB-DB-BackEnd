@@ -59,6 +59,7 @@ services:
   # configure the AppSmith container (borrowed directly from Appsmith)
   appsmith:
     image: index.docker.io/appsmith/appsmith-ce
+    # image: appsmith/appsmith-ce:v1.8.9
     container_name: appsmith
     ports:
       - "8080:80"
