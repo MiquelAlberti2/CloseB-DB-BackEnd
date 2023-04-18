@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, current_app, jsonify, make_response
 import json
 from src import db
 
@@ -138,3 +138,32 @@ def get_return_shipments():
     the_response.mimetype = 'application/json'
 
     return the_response
+
+
+@orders.route('/shipments', methods=['POST'])
+def add_new_shipment():
+
+    the_data = request.json
+
+    #extract the values I need
+    #shipping_cost = the_data['ShippingCost']
+    shipping_cost = 2222
+    carrier_ID = the_data['CarrierID']
+    order_ID = the_data['OrderID']
+
+    # write the SQL query to put the info into the database
+    the_query = "INSERT into Shipments (ShippingCost, CarrierID, OrderID)"
+    the_query += "values ('"
+    the_query += str(shipping_cost) + "', "
+    the_query += str(carrier_ID) + ", "
+    the_query += str(order_ID) + ")"
+
+    # to debug in Docker (to show it in the Docker terminal)
+    current_app.logger.info(the_query)
+
+    # insert data into the database
+    cursor = db.get_db().cursor()
+    cursor.execute(the_query)
+    db.get_db().commit() # to apply the changes to the database
+
+    return 'Success!'

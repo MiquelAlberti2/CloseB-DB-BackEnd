@@ -70,9 +70,9 @@ INSERT INTO OrderDetails(OrderID,ProductID,Quantity) VALUES (2,2,8);
 INSERT INTO OrderDetails(OrderID,ProductID,Quantity) VALUES (3,3,8);
 
 -- Shipments
-INSERT INTO Shipments(ShipmentID,ShippingCost,CarrierID,OrderID) VALUES (1,42,1,1);
-INSERT INTO Shipments(ShipmentID,ShippingCost,CarrierID,OrderID) VALUES (2,70,2,2);
-INSERT INTO Shipments(ShipmentID,ShippingCost,CarrierID,OrderID) VALUES (3,19,3,3);
+INSERT INTO Shipments(ShippingCost,CarrierID,OrderID) VALUES (42,1,1);
+INSERT INTO Shipments(ShippingCost,CarrierID,OrderID) VALUES (70,2,2);
+INSERT INTO Shipments(ShippingCost,CarrierID,OrderID) VALUES (19,3,3);
 
 -- Wish_lists
 INSERT INTO Wish_lists(WishID,Name,CustomerID) VALUES (1,'Jaquith',1);

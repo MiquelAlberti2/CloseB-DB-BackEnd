@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS closeb_schema.OrderDetails (
 );
 
 CREATE TABLE IF NOT EXISTS closeb_schema.Shipments (
-  ShipmentID INT,
+  ShipmentID INT AUTO_INCREMENT ,
   ShippingCost DECIMAL,
   CarrierID INT,
   OrderID INT,
