@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS closeb_schema.Carrier_rates (
   CarrierID INT NOT NULL,
   ZIP VARCHAR(10) NOT NULL,
   Price DECIMAL NOT NULL,
-  PRIMARY KEY (Location, CarrierID),
+  PRIMARY KEY (ZIP, CarrierID),
   -- Carrier rates updated/deleted when carrier is
   CONSTRAINT fk_4 FOREIGN KEY (CarrierID) REFERENCES Carriers(CarrierID)
       ON UPDATE CASCADE
