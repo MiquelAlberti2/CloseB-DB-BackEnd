@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
 
@@ -109,3 +109,76 @@ def get_review_made_with_customerID():
         json_data.append(dict(zip(column_headers, row)))
 
     return jsonify(json_data)
+
+@products.route('/products/<ProductID>', methods=['PUT'])
+def update_product_price(ProductID):
+
+    the_data = request.json
+
+    #extract the values
+    price = the_data['price']
+
+    # get a cursor object from the database
+    cursor = db.get_db().cursor()
+
+    # use cursor to query the database for a list of products
+    cursor.execute('UPDATE Products SET Price = '+str(price)+ ' WHERE ProductID = '+str(ProductID))
+
+    db.get_db().commit()
+
+    return "Success!"
+
+@products.route('/CategoryTitle', methods=['GET'])
+def get_CategoryTitle():
+    cursor = db.get_db().cursor()
+
+    query = '''
+    SELECT Title AS label, Title AS value
+    FROM Categories
+    '''
+    cursor.execute(query)
+    
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    return the_response
+
+@products.route('/productdetails', methods=['POST'])
+def add_new_product_details():
+
+    the_data = request.json
+
+    #extract the values I need
+    #shipping_cost = the_data['ShippingCost']
+    Name = the_data['Name']
+    Description = the_data['Description']
+    Price = the_data['Price']
+    Category_Title = the_data['Category_Title']
+    BrandID = the_data['BrandID']
+
+
+    # write the SQL query to put the info into the database
+    the_query = "INSERT into Products (Name, Description, Category_Title, BrandID, Price)"
+    the_query += " values ( '"
+    the_query += str(Name) + "', '"
+    the_query += str(Description) + "', '"
+    the_query += str(Category_Title) + "',"
+    the_query += str(BrandID) + ","
+    the_query += str(Price) + " )"
+
+    # to debug in Docker (to show it in the Docker terminal)
+    current_app.logger.info(the_query)
+
+    # insert data into the database
+    cursor = db.get_db().cursor()
+    cursor.execute(the_query)
+    db.get_db().commit() # to apply the changes to the database
+
+    return 'Success!'
