@@ -227,3 +227,31 @@ def get_order_returns_detail():
         json_data.append(dict(zip(column_headers, row)))
 
     return jsonify(json_data)
+
+
+# Get information about Customers - PAGE 2
+
+@orders.route('/customers', methods=['GET'])
+def get_customers():
+    # get a cursor object from the database
+    cursor = db.get_db().cursor()
+
+    # use cursor to query the database for a list of products
+    cursor.execute('SELECT CustomerID, City, ZIP FROM Customers')
+
+    # grab the column headers from the returned data
+    column_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in 
+    # putting column headers together with data
+    json_data = []
+
+    # fetch all the data from the cursor
+    theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers. 
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
