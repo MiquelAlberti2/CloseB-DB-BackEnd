@@ -96,5 +96,66 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "1e6a6518-445a-41ac-a816-7ab715746ece",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/o/shipments",
+    "url": "localhost:8001/o/shipments",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-18T19:49:48.051Z",
+    "modified": "2023-04-18T19:49:48.051Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "6c7a70cc-074e-4e46-b401-3d03ed775531",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/o/shipments",
+    "url": "localhost:8001/o/shipments",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-18T19:50:12.064Z",
+    "modified": "2023-04-18T20:01:14.226Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "[\n  {\n    \"ShippingCost\": 100,\n    \"CarrierID\": 1,\n    \"OrderID\": 2\n  }\n]",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "8fa3de41-8995-4a05-94b3-036575b4a359",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/0/returnDetail",
+    "url": "localhost:8001/0/returnDetail",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-19T02:28:56.388Z",
+    "modified": "2023-04-19T02:28:56.388Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "78eb6b71-d8a8-44a1-aa66-36d44e1a015e",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/o/returnDetail",
+    "url": "localhost:8001/o/returnDetail",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-19T02:29:04.846Z",
+    "modified": "2023-04-19T02:29:04.846Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
