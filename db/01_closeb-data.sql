@@ -459,7 +459,7 @@ INSERT INTO closeb_schema.Variants(ProductID,color,size,stock) VALUES (87,'Turqu
 INSERT INTO closeb_schema.Variants(ProductID,color,size,stock) VALUES (55,'Aquamarine','2XL',59);
 INSERT INTO closeb_schema.Variants(ProductID,color,size,stock) VALUES (130,'Crimson','S',75);
 INSERT INTO closeb_schema.Variants(ProductID,color,size,stock) VALUES (91,'Puce','2XL',14);
-INSERT INTO closeb_schema.Variants(ProductID,color,size,stock) VALUES (20,'Green','M',76);
+INSERT INTO closeb_schema.Variants(ProductID,color,size,stock) VALUES (21,'Green','M',76);
 INSERT INTO closeb_schema.Variants(ProductID,color,size,stock) VALUES (122,'Goldenrod','2XL',54);
 INSERT INTO closeb_schema.Variants(ProductID,color,size,stock) VALUES (149,'Aquamarine','M',62);
 INSERT INTO closeb_schema.Variants(ProductID,color,size,stock) VALUES (106,'Aquamarine','3XL',26);
