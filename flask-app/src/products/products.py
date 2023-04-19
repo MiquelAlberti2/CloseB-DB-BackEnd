@@ -66,7 +66,7 @@ def get_review_made():
     cursor = db.get_db().cursor()
 
     # use cursor to query the database for a list of products
-    cursor.execute('SELECT CustomerID, ProductID, n_stars, comment FROM Review_made')
+    cursor.execute('SELECT ProductID, n_stars, comment FROM Review_made')
 
     # grab the column headers from the returned data
     column_headers = [x[0] for x in cursor.description]
