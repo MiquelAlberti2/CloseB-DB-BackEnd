@@ -183,7 +183,7 @@ def get_shipment_price():
     query  = "SELECT Price FROM Carrier_rates"
     query += " WHERE CarrierID = "+str(carrier_ID)
     query += " AND ZIP = (SELECT ZIP FROM Customers"
-    query +=            " WHERE CustomerID = "+ str(customer_ID) +")"
+    query +=            " WHERE CustomerID = "+ str(customer_ID) +" )"
     
     cursor = db.get_db().cursor()
     cursor.execute(query)
