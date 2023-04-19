@@ -169,28 +169,25 @@ def add_new_shipment():
 
     return 'Success!'
 
-# Get all order returns from the DB
-@orders.route('/shipments/returns', methods=['GET'])
+# Get price for a given shipment
+@orders.route('/shipment/price', methods=['GET'])
 def get_shipment_price():
 
     the_data = request.json
 
     # extract the values I need
-    shipping_cost = the_data['ShippingCost']
     carrier_ID = the_data['CarrierID']
-    order_ID = the_data['OrderID']
+    customer_ID = the_data['CustomerID']
 
     # look for the result in the database
-    query = '''
-    SELECT ShipmentID, ShippingCost, CarrierID, OrderID
-    FROM Shipments
-    WHERE OrderID IN (SELECT OrderID
-                      FROM Orders
-                      WHERE isReturn = 1)
-    '''
+    query  = "SELECT Price FROM Carrier_rates"
+    query += " WHERE CarrierID = "+str(carrier_ID)
+    query += " AND ZIP = (SELECT ZIP FROM Customers"
+    query +=            " WHERE CustomerID = "+ str(customer_ID) +" )"
+    
     cursor = db.get_db().cursor()
     cursor.execute(query)
-    
+
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -203,6 +200,10 @@ def get_shipment_price():
 
     return the_response
 
+
+
+
+# ---------------------------------------------------------------------
 @orders.route('/returnDetail', methods=['GET'])
 def get_order_returns_detail():
     # get a cursor object from the database
