@@ -24,7 +24,7 @@ USE `closeb_schema`;
 #
 
 -- Customers
-INSERT INTO closeb_schema.Customers(First,Last,City,ZIP,State,Street) VALUES ('Basil','Northin','Pensacola',32590,'Florida','892 Roxbury Hill');
+INSERT INTO closeb_schema.Customers(First,Last,City,ZIP,State,Street) VALUES ('Basil','Northin','Pensacola',02120,'Florida','892 Roxbury Hill');
 INSERT INTO closeb_schema.Customers(First,Last,City,ZIP,State,Street) VALUES ('Bartlet','Huygen','Pasadena',91186,'California','58782 Montana Parkway');
 INSERT INTO closeb_schema.Customers(First,Last,City,ZIP,State,Street) VALUES ('Yehudit','Lillegard','Evansville',47737,'Indiana','4823 Crowley Place');
 INSERT INTO closeb_schema.Customers(First,Last,City,ZIP,State,Street) VALUES ('Hendrick','Saterthwait','Detroit',48295,'Michigan','4 Memorial Pass');
@@ -521,6 +521,9 @@ INSERT INTO closeb_schema.Carriers(Phone,Email) VALUES ('699-780-6066','mernshaw
 
 
 -- Carrier_rates
+INSERT INTO closeb_schema.Carrier_rates(CarrierID,ZIP,Price) VALUES (2,02120,14);
+INSERT INTO closeb_schema.Carrier_rates(CarrierID,ZIP,Price) VALUES (3,02120,10);
+
 INSERT INTO closeb_schema.Carrier_rates(CarrierID,ZIP,Price) VALUES (27,40736,23);
 INSERT INTO closeb_schema.Carrier_rates(CarrierID,ZIP,Price) VALUES (40,98256,46);
 INSERT INTO closeb_schema.Carrier_rates(CarrierID,ZIP,Price) VALUES (30,70183,93);
