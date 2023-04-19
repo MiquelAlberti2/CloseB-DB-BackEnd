@@ -148,8 +148,7 @@ def add_new_shipment():
     the_data = request.json
 
     #extract the values I need
-    #shipping_cost = the_data['ShippingCost']
-    shipping_cost = 2222
+    shipping_cost = the_data['ShippingCost']
     carrier_ID = the_data['CarrierID']
     order_ID = the_data['OrderID']
 
@@ -169,6 +168,40 @@ def add_new_shipment():
     db.get_db().commit() # to apply the changes to the database
 
     return 'Success!'
+
+# Get all order returns from the DB
+@orders.route('/shipments/returns', methods=['GET'])
+def get_shipment_price():
+
+    the_data = request.json
+
+    # extract the values I need
+    shipping_cost = the_data['ShippingCost']
+    carrier_ID = the_data['CarrierID']
+    order_ID = the_data['OrderID']
+
+    # look for the result in the database
+    query = '''
+    SELECT ShipmentID, ShippingCost, CarrierID, OrderID
+    FROM Shipments
+    WHERE OrderID IN (SELECT OrderID
+                      FROM Orders
+                      WHERE isReturn = 1)
+    '''
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    return the_response
 
 @orders.route('/returnDetail', methods=['GET'])
 def get_order_returns_detail():
