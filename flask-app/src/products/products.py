@@ -109,3 +109,22 @@ def get_review_made_with_customerID():
         json_data.append(dict(zip(column_headers, row)))
 
     return jsonify(json_data)
+
+@products.route('/products/<ProductID>', methods=['PUT'])
+def update_product_price(ProductID):
+
+    the_data = request.json
+
+    #extract the values
+    price = the_data['price']
+
+    # get a cursor object from the database
+    cursor = db.get_db().cursor()
+
+    # use cursor to query the database for a list of products
+    cursor.execute('UPDATE Products SET Price = '+str(price)+ ' WHERE ProductID = '+str(ProductID))
+
+    db.get_db().commit()
+
+    return "Success!"
+    
