@@ -29,7 +29,7 @@ USE `closeb_schema` ;
 
 -- Create the Customers table
 CREATE TABLE IF NOT EXISTS closeb_schema.Customers (
-  CustomerID INT PRIMARY KEY,
+  CustomerID INT PRIMARY KEY AUTO_INCREMENT,
   First VARCHAR(50) NOT NULL,
   Last VARCHAR(50) NOT NULL,
   City VARCHAR(100),
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS closeb_schema.Customers (
 );
 
 CREATE TABLE IF NOT EXISTS closeb_schema.Brands (
-    BrandID INT,
+    BrandID INT AUTO_INCREMENT,
     Name VARCHAR(50),
     Email VARCHAR(50),
     City VARCHAR(50),
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS closeb_schema.Categories (
 CREATE TABLE IF NOT EXISTS closeb_schema.Products (
     Name VARCHAR(50),
     Description VARCHAR(50),
-    ProductID INT,
+    ProductID INT AUTO_INCREMENT,
     Price INT,
     BrandID INT,
     Category_Title VARCHAR(50),
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS closeb_schema.Variants (
 
 
 CREATE TABLE IF NOT EXISTS closeb_schema.Carriers (
-  CarrierID INT,
+  CarrierID INT AUTO_INCREMENT,
   Phone VARCHAR(20) NOT NULL,
   Email VARCHAR(50) NOT NULL,
   PRIMARY KEY (CarrierID)
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS closeb_schema.Carrier_rates (
 
 
 CREATE TABLE IF NOT EXISTS closeb_schema.Orders (
-  OrderID INT,
+  OrderID INT AUTO_INCREMENT,
   Date DATETIME DEFAULT CURRENT_TIMESTAMP,
   Price DECIMAL,
   CustomerID INT,
@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS closeb_schema.Shipments (
 
 -- Create the Wish_lists table
 CREATE TABLE IF NOT EXISTS Wish_lists (
-  WishID INT,
+  WishID INT AUTO_INCREMENT,
   Name VARCHAR(100) NOT NULL,
   CustomerID INT,
   PRIMARY KEY(WishID),
