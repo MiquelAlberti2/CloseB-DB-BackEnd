@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS closeb_schema.Brands (
     Name VARCHAR(50),
     Email VARCHAR(50),
     City VARCHAR(50),
-    ZIP VARCHAR(50),
+    ZIP VARCHAR(50) NOT NULL,
     State VARCHAR(50),
     Street VARCHAR(50),
     PRIMARY KEY (BrandID)
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS closeb_schema.Carriers (
 
 CREATE TABLE IF NOT EXISTS closeb_schema.Carrier_rates (
   CarrierID INT NOT NULL,
-  Location VARCHAR(50) NOT NULL,
+  ZIP VARCHAR(10) NOT NULL,
   Price DECIMAL NOT NULL,
   PRIMARY KEY (Location, CarrierID),
   -- Carrier rates updated/deleted when carrier is
