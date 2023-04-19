@@ -2,6 +2,8 @@ from flask import Blueprint, request, current_app, jsonify, make_response
 import json
 from src import db
 
+# FOR PERSONA1 - Marketplace Admin
+# TODO: Rename file if this is the only Blueprint we use for this persona
 
 orders = Blueprint('orders', __name__)
 
