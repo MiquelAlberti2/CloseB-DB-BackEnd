@@ -199,3 +199,22 @@ def get_shipment_price():
     the_response.mimetype = 'application/json'
 
     return the_response
+
+# Delete an order
+@orders.route('/orders/<order_ID>', methods=['DELETE'])
+def delete_order(order_ID):
+
+    # look for the result in the database
+    query  = "DELETE FROM Orders "
+    query += "WHERE OrderID = "+str(order_ID)
+    
+    # to debug in Docker (to show it in the Docker terminal)
+    current_app.logger.info(query)
+
+    # insert data into the database
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit() # to apply the changes to the database
+
+    return 'Success!'
+
