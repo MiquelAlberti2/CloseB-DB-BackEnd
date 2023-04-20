@@ -133,6 +133,7 @@ def update_product(ProductID):
 
     return "Success!"
 
+# Get all category titles from the DB
 @products.route('/CategoryTitle', methods=['GET'])
 def get_CategoryTitle():
     cursor = db.get_db().cursor()
@@ -166,7 +167,7 @@ def add_new_product_details():
     Description = the_data['Description']
     Price = the_data['Price']
     Category_Title = the_data['Category_Title']
-    BrandID = the_data['BrandID']
+    BrandID = 1
 
 
     # write the SQL query to put the info into the database
@@ -199,26 +200,3 @@ def delete_products(ProductID):
     db.get_db().commit() # to apply the changes to the database
 
     return 'Success!'
-
-# Get all category titles from the DB
-@products.route('/categoryTitles', methods=['GET'])
-def get_category_titles():
-    cursor = db.get_db().cursor()
-
-    query = '''
-    SELECT Title AS label, Title AS value
-    FROM Categories
-    '''
-    cursor.execute(query)
-    
-    row_headers = [x[0] for x in cursor.description]
-    json_data = []
-    theData = cursor.fetchall()
-    for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-
-    the_response = make_response(jsonify(json_data))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-
-    return the_response
