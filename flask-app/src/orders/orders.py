@@ -183,7 +183,7 @@ def get_shipment_price():
     query  = "SELECT Price FROM Carrier_rates"
     query += " WHERE CarrierID = "+str(carrier_ID)
     query += " AND ZIP = (SELECT ZIP FROM Customers"
-    query +=            " WHERE CustomerID = "+ str(customer_ID) +" )"
+    query += " WHERE CustomerID = "+ str(customer_ID) +" )"
     
     cursor = db.get_db().cursor()
     cursor.execute(query)
@@ -218,3 +218,161 @@ def delete_order(order_ID):
 
     return 'Success!'
 
+
+# Get information about Customers - PAGE 2
+
+@orders.route('/customers', methods=['GET'])
+
+# See partial information of all customers in a table
+def get_customers():
+    # get a cursor object from the database
+    cursor = db.get_db().cursor()
+
+    # use cursor to query the database for a list of products
+    cursor.execute('SELECT CustomerID, City, ZIP FROM Customers')
+
+    # grab the column headers from the returned data
+    column_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in 
+    # putting column headers together with data
+    json_data = []
+
+    # fetch all the data from the cursor
+    theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers. 
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
+
+# Get number of orders/returns that a customer has made
+# Get price for a given shipment
+@orders.route('/orders/<CustomerID>/<isReturn>', methods=['GET'])
+def get_no_customer_orders(CustomerID, isReturn):
+
+    # get a cursor object from the database
+    cursor = db.get_db().cursor()
+
+    # the_data = request.json
+
+    # extract the values I need
+    # CustomerID = the_data['CustomerID']
+    # isReturn = the_data['isReturn']
+
+    # look for the result in the database
+    query  = "SELECT Count(OrderID)"
+    query += " FROM Customers JOIN Orders O on Customers.CustomerID = O.CustomerID"
+    query += " WHERE O.CustomerID =" + str(CustomerID)
+    query += " AND isReturn = "+ str(isReturn)
+    # query  = "SELECT Count(OrderID)"
+    # query += " FROM Customers JOIN Orders O on Customers.CustomerID = O.CustomerID"
+    # query += " WHERE O.CustomerID = 1"
+    # query += " AND isReturn = 1"
+
+    cursor.execute(query)
+    
+    # grab the column headers from the returned data
+    column_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in 
+    # putting column headers together with data
+    json_data = []
+
+    # fetch all the data from the cursor
+    theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers. 
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
+
+@orders.route('/orders/amountSpent/<CustomerID>/', methods=['GET'])
+def get_amount_spent(CustomerID):
+
+    # get a cursor object from the database
+    cursor = db.get_db().cursor()
+
+
+    # look for the result in the database
+    query  = "SELECT SUM(Price)"
+    query += " FROM Customers JOIN Orders O on Customers.CustomerID = O.CustomerID"
+    query += " WHERE O.CustomerID =" + str(CustomerID)
+    query += " AND isReturn = false"
+
+    cursor.execute(query)
+    
+    # grab the column headers from the returned data
+    column_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in 
+    # putting column headers together with data
+    json_data = []
+
+    # fetch all the data from the cursor
+    theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers. 
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
+
+@orders.route('/brands', methods=['GET'])
+def get_brands():
+    cursor = db.get_db().cursor()
+
+    query = '''
+    SELECT *
+    FROM Brands
+    '''
+    cursor.execute(query)
+    
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    return the_response
+
+@orders.route('/brands/<BrandID>', methods=['PUT'])
+def update_brand_info(BrandID):
+
+    the_data = request.json
+
+    #extract the values
+    Name = the_data['Name']
+    Email = the_data['Email']
+    City = the_data['City']
+    zip = the_data['ZIP']
+    State = the_data['State']
+    Street = the_data['Street']
+
+    # get a cursor object from the database
+    cursor = db.get_db().cursor()
+
+    query = "UPDATE Brands"
+    query += " SET Name = " + "'" + str(Name) + "'" + ","
+    query += " Email = " + "'" + str(Email) + "'" + ","
+    query += " City = " + "'" + str(City) + "'" + ","
+    query += " ZIP = " + "'" + str(zip) + "'" + ","
+    query += " State = " + "'" + str(State) + "'" + ","
+    query += " Street = " "'" + str(Street) + "'"
+    query += " WHERE BrandID = " + str(BrandID)
+
+    # use cursor to query the database for a list of products
+    cursor.execute(query)
+
+    db.get_db().commit()
+
+    return "Success!"
