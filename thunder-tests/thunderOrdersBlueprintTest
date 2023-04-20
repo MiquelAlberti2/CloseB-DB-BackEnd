@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Orders Blueprint",
-    "dateExported": "2023-04-20T15:24:59.699Z",
+    "dateExported": "2023-04-20T22:08:14.642Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -84,12 +84,31 @@
             "method": "POST",
             "sortNum": 80000,
             "created": "2023-04-20T15:10:52.411Z",
-            "modified": "2023-04-20T15:13:09.730Z",
+            "modified": "2023-04-20T20:33:32.588Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\r\n  \"CarrierID\": 2,\r\n  \"ShippingCost\": \"14\",\r\n  \"OrderID\": 1\r\n}",
+                "raw": "{\n  \"CarrierID\": 3,\n  \"ShippingCost\": \"10\",\n  \"OrderID\": 1\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "300271a7-21d0-4d5d-beda-83b65554f29f",
+            "colId": "d9878bc0-e800-4147-8955-e1d415423dd0",
+            "containerId": "",
+            "name": "create shipment 2",
+            "url": "localhost:8001/o/shipments",
+            "method": "POST",
+            "sortNum": 85000,
+            "created": "2023-04-20T20:31:39.385Z",
+            "modified": "2023-04-20T22:07:31.653Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"CarrierID\": 2,\n  \"ShippingCost\": \"14\",\n  \"OrderID\": 1\n}",
                 "form": []
             },
             "tests": []
@@ -103,14 +122,42 @@
             "method": "GET",
             "sortNum": 90000,
             "created": "2023-04-20T15:14:17.840Z",
-            "modified": "2023-04-20T15:15:55.237Z",
+            "modified": "2023-04-20T22:07:35.972Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\r\n  \"CarrierID\": 2,\r\n  \"CustomerID\": 1\r\n}",
+                "raw": "{\n  \"CarrierID\": 2,\n  \"CustomerID\": 1\n}",
                 "form": []
             },
+            "tests": []
+        },
+        {
+            "_id": "3a35edac-66af-4f95-bfa4-abaa81b34fc0",
+            "colId": "d9878bc0-e800-4147-8955-e1d415423dd0",
+            "containerId": "",
+            "name": "delete order",
+            "url": "localhost:8001/o/orders/12",
+            "method": "DELETE",
+            "sortNum": 100000,
+            "created": "2023-04-20T17:30:02.877Z",
+            "modified": "2023-04-20T17:30:53.973Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "2781f30d-cb29-4b9d-b2a9-b7625c050fd1",
+            "colId": "d9878bc0-e800-4147-8955-e1d415423dd0",
+            "containerId": "",
+            "name": "delete order 2",
+            "url": "localhost:8001/o/orders/7",
+            "method": "DELETE",
+            "sortNum": 110000,
+            "created": "2023-04-20T20:31:45.050Z",
+            "modified": "2023-04-20T20:35:09.327Z",
+            "headers": [],
+            "params": [],
             "tests": []
         }
     ]
