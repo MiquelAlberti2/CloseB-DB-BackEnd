@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "../../../db"
+		},
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../secrets"
+		},
+		{
+			"path": "../../../stacks"
+		},
+		{
+			"path": "../../../thunder-tests"
+		}
+	],
+	"settings": {}
+}
