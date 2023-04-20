@@ -182,3 +182,15 @@ def add_new_product_details():
     db.get_db().commit() # to apply the changes to the database
 
     return 'Success!'
+
+# Delete the products with certain ProductID from the database
+@products.route('/productsdelete/<ProductID>', methods=['DELETE'])
+def delete_products(ProductID):
+    
+    # get a cursor object from the database
+    cursor = db.get_db().cursor()
+    # use cursor to query the database for deleting a product
+    cursor.execute("DELETE FROM Products WHERE ProductID = "+str(ProductID))
+    db.get_db().commit() # to apply the changes to the database
+
+    return 'Success!'
