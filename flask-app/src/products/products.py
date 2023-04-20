@@ -12,7 +12,8 @@ def get_products():
     cursor = db.get_db().cursor()
 
     # use cursor to query the database for a list of products
-    cursor.execute('SELECT ProductID, Name, Description, Price, BrandID FROM Products')
+    cursor.execute('SELECT ProductID, Name, Description, Price, Category_Title FROM Products \
+                   WHERE BrandID = 1')
 
     # grab the column headers from the returned data
     column_headers = [x[0] for x in cursor.description]
@@ -194,3 +195,26 @@ def delete_products(ProductID):
     db.get_db().commit() # to apply the changes to the database
 
     return 'Success!'
+
+# Get all category titles from the DB
+@products.route('/categoryTitles', methods=['GET'])
+def get_category_titles():
+    cursor = db.get_db().cursor()
+
+    query = '''
+    SELECT Title AS label, Title AS value
+    FROM Categories
+    '''
+    cursor.execute(query)
+    
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    return the_response
