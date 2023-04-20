@@ -42,6 +42,20 @@
     "tests": []
   },
   {
+    "_id": "f142e132-8969-496f-91b0-1e7a43d7ac7d",
+    "colId": "6fce7931-1e4f-4a8f-8717-17432df6dcb4",
+    "containerId": "",
+    "name": "Get products ",
+    "url": "localhost:8001/p/products",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-04-20T19:51:42.096Z",
+    "modified": "2023-04-20T19:52:00.643Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
     "_id": "e1c24d52-6db9-48e4-85f5-2d5f7bbe75f3",
     "colId": "ea944bc8-3a51-4a09-824d-7f870e5db754",
     "containerId": "",
@@ -56,6 +70,20 @@
     "tests": []
   },
   {
+    "_id": "0c33ff78-1833-4984-8ef2-d4de47a1e37c",
+    "colId": "6fce7931-1e4f-4a8f-8717-17432df6dcb4",
+    "containerId": "",
+    "name": "get review made",
+    "url": "localhost:8001/p/Review_made",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2023-04-20T19:52:53.160Z",
+    "modified": "2023-04-20T19:53:26.307Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
     "_id": "a59f739d-8173-40a4-9312-447929e7d612",
     "colId": "ea944bc8-3a51-4a09-824d-7f870e5db754",
     "containerId": "",
@@ -65,6 +93,20 @@
     "sortNum": 30000,
     "created": "2023-04-20T16:51:38.712Z",
     "modified": "2023-04-20T16:51:54.231Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "0d96dca0-e723-4074-b84c-d06d8f5a0a53",
+    "colId": "6fce7931-1e4f-4a8f-8717-17432df6dcb4",
+    "containerId": "",
+    "name": "get review made of particular customer",
+    "url": "localhost:8001/p//Review_made/CustomerID",
+    "method": "GET",
+    "sortNum": 50000,
+    "created": "2023-04-20T19:54:26.182Z",
+    "modified": "2023-04-20T19:54:44.532Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -98,6 +140,39 @@
     "tests": []
   },
   {
+    "_id": "6e926f23-7f01-4682-a345-c2b8bcfa0002",
+    "colId": "6fce7931-1e4f-4a8f-8717-17432df6dcb4",
+    "containerId": "",
+    "name": "put product",
+    "url": "localhost:8001/p/products/1",
+    "method": "PUT",
+    "sortNum": 60000,
+    "created": "2023-04-20T19:55:45.236Z",
+    "modified": "2023-04-20T19:58:18.602Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"Name\": \"yessss\",\n  \"Description\": \"Switchable\",\n  \"CategoryTitle\": \"50\",\n  \"Price\": 30\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "11f9820e-2eb6-4c42-85f8-ab01c41af0a9",
+    "colId": "6fce7931-1e4f-4a8f-8717-17432df6dcb4",
+    "containerId": "",
+    "name": "get category title",
+    "url": "localhost:8001/p/CategoryTitle",
+    "method": "GET",
+    "sortNum": 70000,
+    "created": "2023-04-20T19:59:28.870Z",
+    "modified": "2023-04-20T19:59:46.217Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
     "_id": "e6d9bf95-5c32-41fd-9394-b5c03da9d1a6",
     "colId": "ea944bc8-3a51-4a09-824d-7f870e5db754",
     "containerId": "",
@@ -117,6 +192,25 @@
     "tests": []
   },
   {
+    "_id": "766ab92c-356c-4c07-a7a7-6a51e883698b",
+    "colId": "6fce7931-1e4f-4a8f-8717-17432df6dcb4",
+    "containerId": "",
+    "name": "post product details",
+    "url": "localhost:8001/p/productdetails",
+    "method": "POST",
+    "sortNum": 90000,
+    "created": "2023-04-20T20:00:19.965Z",
+    "modified": "2023-04-20T20:03:46.449Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"Name\": \"yessss\",\n  \"Description\": \"Switchable\",\n  \"Category_Title\": \"50\",\n  \"Price\": 30\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
     "_id": "8a09820e-dc60-497d-ba3b-29cd33be010a",
     "colId": "ea944bc8-3a51-4a09-824d-7f870e5db754",
     "containerId": "",
@@ -126,6 +220,20 @@
     "sortNum": 45000,
     "created": "2023-04-20T20:26:38.202Z",
     "modified": "2023-04-20T20:26:48.340Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "be8dea59-56d2-4322-8ddf-54cfdcf49c14",
+    "colId": "6fce7931-1e4f-4a8f-8717-17432df6dcb4",
+    "containerId": "",
+    "name": "delete product",
+    "url": "localhost:8001/p/productsdelete/5",
+    "method": "DELETE",
+    "sortNum": 100000,
+    "created": "2023-04-20T20:05:41.366Z",
+    "modified": "2023-04-20T20:06:52.375Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -142,11 +250,72 @@
     "modified": "2023-04-20T20:27:56.876Z",
     "headers": [],
     "params": [],
+    "tests": []
+  },
+  {
+    "_id": "79e46cca-7fcc-4305-b319-302cccc1cbe3",
+    "colId": "6fce7931-1e4f-4a8f-8717-17432df6dcb4",
+    "containerId": "",
+    "name": "delete product 2",
+    "url": "localhost:8001/p/productsdelete/9",
+    "method": "DELETE",
+    "sortNum": 110000,
+    "created": "2023-04-20T20:41:58.348Z",
+    "modified": "2023-04-20T20:42:31.920Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "d3c1a620-a20e-42d0-97da-36acd7fa0e4e",
+    "colId": "6fce7931-1e4f-4a8f-8717-17432df6dcb4",
+    "containerId": "",
+    "name": "post product details 2",
+    "url": "localhost:8001/p/productdetails",
+    "method": "POST",
+    "sortNum": 120000,
+    "created": "2023-04-20T20:45:48.431Z",
+    "modified": "2023-04-20T20:46:37.375Z",
+    "headers": [],
+    "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"Name\": \"Hasblow\",\n  \"Email\": \"megatron@cybertron.com\",\n  \"City\": \"Kaon\",\n  \"ZIP\": \"11111\",\n  \"State\": \"Blaster City String\",\n  \"Street\": \"13 Gladiator Pits\"\n}  \n",
+      "raw": "{\n  \"Name\": \"John\",\n  \"Description\": \"Great guy\",\n  \"Category_Title\": \"20\",\n  \"Price\": 40\n}",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "d4402dc5-357e-4055-b63f-8d3b306b32ab",
+    "colId": "6fce7931-1e4f-4a8f-8717-17432df6dcb4",
+    "containerId": "",
+    "name": "put product 2",
+    "url": "localhost:8001/p/products/5",
+    "method": "PUT",
+    "sortNum": 130000,
+    "created": "2023-04-20T20:54:25.212Z",
+    "modified": "2023-04-20T20:55:32.114Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"Name\": \"brownie\",\n  \"Description\": \"sweet\",\n  \"CategoryTitle\": \"30\",\n  \"Price\": 50\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "ab7342a0-a571-404a-bb41-9129309186f5",
+    "colId": "6fce7931-1e4f-4a8f-8717-17432df6dcb4",
+    "containerId": "",
+    "name": "get product description",
+    "url": "localhost:8001/p/productdescription",
+    "method": "GET",
+    "sortNum": 140000,
+    "created": "2023-04-20T21:44:30.023Z",
+    "modified": "2023-04-20T21:47:51.999Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]

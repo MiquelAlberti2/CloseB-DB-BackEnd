@@ -12,37 +12,10 @@ def get_products():
     cursor = db.get_db().cursor()
 
     # use cursor to query the database for a list of products
-    cursor.execute('SELECT ProductID, Name, Description, Price, BrandID FROM Products')
+    cursor.execute('SELECT ProductID, Name, Description, Price, Category_Title FROM Products \
+                   WHERE BrandID = 1')
 
     # grab the column headers from the returned data
-    column_headers = [x[0] for x in cursor.description]
-
-    # create an empty dictionary object to use in 
-    # putting column headers together with data
-    json_data = []
-
-    # fetch all the data from the cursor
-    theData = cursor.fetchall()
-
-    # for each of the rows, zip the data elements together with
-    # the column headers. 
-    for row in theData:
-        json_data.append(dict(zip(column_headers, row)))
-
-    return jsonify(json_data)
-
-# get the top 5 products from the database
-@products.route('/mostExpensive')
-def get_most_pop_products():
-    cursor = db.get_db().cursor()
-    query = '''
-        SELECT product_code, product_name, list_price, reorder_level
-        FROM products
-        ORDER BY list_price DESC
-        LIMIT 5
-    '''
-    cursor.execute(query)
-       # grab the column headers from the returned data
     column_headers = [x[0] for x in cursor.description]
 
     # create an empty dictionary object to use in 
@@ -111,23 +84,36 @@ def get_review_made_with_customerID():
     return jsonify(json_data)
 
 @products.route('/products/<ProductID>', methods=['PUT'])
-def update_product_price(ProductID):
+def update_product(ProductID):
 
     the_data = request.json
 
     #extract the values
-    price = the_data['price']
+    price = the_data['Price']
+    name = the_data['Name']
+    categoryTitle = the_data['CategoryTitle']
+    description = the_data['Description']
+    
 
     # get a cursor object from the database
     cursor = db.get_db().cursor()
 
     # use cursor to query the database for a list of products
-    cursor.execute('UPDATE Products SET Price = '+str(price)+ ' WHERE ProductID = '+str(ProductID))
+    query = "UPDATE Products SET Price = "+str(price)
+    query += ", Name = '"+str(name)
+    query += "', Category_Title = '"+str(categoryTitle)
+    query += "',  Description = '"+str(description)
+    query += "' WHERE ProductID = "+str(ProductID)
 
+    # to debug in Docker (to show it in the Docker terminal)
+    current_app.logger.info(query)
+    
+    cursor.execute(query)
     db.get_db().commit()
 
     return "Success!"
 
+# Get all category titles from the DB
 @products.route('/CategoryTitle', methods=['GET'])
 def get_CategoryTitle():
     cursor = db.get_db().cursor()
@@ -161,7 +147,7 @@ def add_new_product_details():
     Description = the_data['Description']
     Price = the_data['Price']
     Category_Title = the_data['Category_Title']
-    BrandID = the_data['BrandID']
+    BrandID = 1
 
 
     # write the SQL query to put the info into the database
@@ -194,3 +180,30 @@ def delete_products(ProductID):
     db.get_db().commit() # to apply the changes to the database
 
     return 'Success!'
+
+# Get all the products from the database with description
+@products.route('/productdescription', methods=['GET'])
+def get_product_description():
+    # get a cursor object from the database
+    cursor = db.get_db().cursor()
+
+    # use cursor to query the database for a list of products
+    cursor.execute('SELECT ProductID, Name, Description FROM Products \
+                   WHERE BrandID = 1')
+
+    # grab the column headers from the returned data
+    column_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in 
+    # putting column headers together with data
+    json_data = []
+
+    # fetch all the data from the cursor
+    theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers. 
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
