@@ -183,7 +183,7 @@ def get_shipment_price():
     query  = "SELECT Price FROM Carrier_rates"
     query += " WHERE CarrierID = "+str(carrier_ID)
     query += " AND ZIP = (SELECT ZIP FROM Customers"
-    query +=            " WHERE CustomerID = "+ str(customer_ID) +" )"
+    query += " WHERE CustomerID = "+ str(customer_ID) +" )"
     
     cursor = db.get_db().cursor()
     cursor.execute(query)
@@ -233,6 +233,8 @@ def get_order_returns_detail():
 # Get information about Customers - PAGE 2
 
 @orders.route('/customers', methods=['GET'])
+
+# See partial information of all customers in a table
 def get_customers():
     # get a cursor object from the database
     cursor = db.get_db().cursor()
@@ -240,6 +242,49 @@ def get_customers():
     # use cursor to query the database for a list of products
     cursor.execute('SELECT CustomerID, City, ZIP FROM Customers')
 
+    # grab the column headers from the returned data
+    column_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in 
+    # putting column headers together with data
+    json_data = []
+
+    # fetch all the data from the cursor
+    theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers. 
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
+
+# Get number of orders/returns that a customer has made
+# Get price for a given shipment
+@orders.route('/orders/<CustomerID>/<isReturn>', methods=['GET'])
+def get_no_customer_orders(CustomerID, isReturn):
+
+    # get a cursor object from the database
+    cursor = db.get_db().cursor()
+
+    # the_data = request.json
+
+    # extract the values I need
+    # CustomerID = the_data['CustomerID']
+    # isReturn = the_data['isReturn']
+
+    # look for the result in the database
+    query  = "SELECT Count(OrderID)"
+    query += " FROM Customers JOIN Orders O on Customers.CustomerID = O.CustomerID"
+    query += " WHERE O.CustomerID =" + str(CustomerID)
+    query += " AND isReturn = "+ str(isReturn)
+    # query  = "SELECT Count(OrderID)"
+    # query += " FROM Customers JOIN Orders O on Customers.CustomerID = O.CustomerID"
+    # query += " WHERE O.CustomerID = 1"
+    # query += " AND isReturn = 1"
+
+    cursor.execute(query)
+    
     # grab the column headers from the returned data
     column_headers = [x[0] for x in cursor.description]
 
