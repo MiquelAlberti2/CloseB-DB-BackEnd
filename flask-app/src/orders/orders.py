@@ -308,21 +308,12 @@ def get_amount_spent(CustomerID):
     # get a cursor object from the database
     cursor = db.get_db().cursor()
 
-    # the_data = request.json
-
-    # extract the values I need
-    # CustomerID = the_data['CustomerID']
-    # isReturn = the_data['isReturn']
 
     # look for the result in the database
     query  = "SELECT SUM(Price)"
     query += " FROM Customers JOIN Orders O on Customers.CustomerID = O.CustomerID"
     query += " WHERE O.CustomerID =" + str(CustomerID)
     query += " AND isReturn = false"
-    # query  = "SELECT Count(OrderID)"
-    # query += " FROM Customers JOIN Orders O on Customers.CustomerID = O.CustomerID"
-    # query += " WHERE O.CustomerID = 1"
-    # query += " AND isReturn = 1"
 
     cursor.execute(query)
     
