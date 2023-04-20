@@ -82,5 +82,71 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "c3e5b76d-7b16-440c-90b4-f22d4e5acbc8",
+    "colId": "ea944bc8-3a51-4a09-824d-7f870e5db754",
+    "containerId": "",
+    "name": "get_brands",
+    "url": "localhost:8001/o/brands",
+    "method": "GET",
+    "sortNum": 50000,
+    "created": "2023-04-20T19:57:37.065Z",
+    "modified": "2023-04-20T19:58:12.751Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "e6d9bf95-5c32-41fd-9394-b5c03da9d1a6",
+    "colId": "ea944bc8-3a51-4a09-824d-7f870e5db754",
+    "containerId": "",
+    "name": "update_brand_info",
+    "url": "localhost:8001/o/brands/1",
+    "method": "PUT",
+    "sortNum": 60000,
+    "created": "2023-04-20T19:59:45.171Z",
+    "modified": "2023-04-20T20:05:06.550Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"Name\": \"Hasbro\",\n  \"Email\": \"optimusprime@cybertron.com\",\n  \"City\": \"Iacon\",\n  \"ZIP\": \"00000\",\n  \"State\": \"Tri-Torus Loop\",\n  \"Street\": \"13 Iacon Hall of Records\"\n}  \n",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "8a09820e-dc60-497d-ba3b-29cd33be010a",
+    "colId": "ea944bc8-3a51-4a09-824d-7f870e5db754",
+    "containerId": "",
+    "name": "get_amount_spent2",
+    "url": "localhost:8001/o/orders/amountSpent/10",
+    "method": "GET",
+    "sortNum": 45000,
+    "created": "2023-04-20T20:26:38.202Z",
+    "modified": "2023-04-20T20:26:48.340Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "403c1b88-1d5c-4eda-bcf1-cc0a76ab3e36",
+    "colId": "ea944bc8-3a51-4a09-824d-7f870e5db754",
+    "containerId": "",
+    "name": "update_brand_info2",
+    "url": "localhost:8001/o/brands/2",
+    "method": "PUT",
+    "sortNum": 70000,
+    "created": "2023-04-20T20:26:54.396Z",
+    "modified": "2023-04-20T20:27:56.876Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"Name\": \"Hasblow\",\n  \"Email\": \"megatron@cybertron.com\",\n  \"City\": \"Kaon\",\n  \"ZIP\": \"11111\",\n  \"State\": \"Blaster City String\",\n  \"Street\": \"13 Gladiator Pits\"\n}  \n",
+      "form": []
+    },
+    "tests": []
   }
 ]

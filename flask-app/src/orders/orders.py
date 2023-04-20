@@ -322,3 +322,57 @@ def get_amount_spent(CustomerID):
         json_data.append(dict(zip(column_headers, row)))
 
     return jsonify(json_data)
+
+@orders.route('/brands', methods=['GET'])
+def get_brands():
+    cursor = db.get_db().cursor()
+
+    query = '''
+    SELECT *
+    FROM Brands
+    '''
+    cursor.execute(query)
+    
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+
+    return the_response
+
+@orders.route('/brands/<BrandID>', methods=['PUT'])
+def update_brand_info(BrandID):
+
+    the_data = request.json
+
+    #extract the values
+    Name = the_data['Name']
+    Email = the_data['Email']
+    City = the_data['City']
+    zip = the_data['ZIP']
+    State = the_data['State']
+    Street = the_data['Street']
+
+    # get a cursor object from the database
+    cursor = db.get_db().cursor()
+
+    query = "UPDATE Brands"
+    query += " SET Name = " + "'" + str(Name) + "'" + ","
+    query += " Email = " + "'" + str(Email) + "'" + ","
+    query += " City = " + "'" + str(City) + "'" + ","
+    query += " ZIP = " + "'" + str(zip) + "'" + ","
+    query += " State = " + "'" + str(State) + "'" + ","
+    query += " Street = " "'" + str(Street) + "'"
+    query += " WHERE BrandID = " + str(BrandID)
+
+    # use cursor to query the database for a list of products
+    cursor.execute(query)
+
+    db.get_db().commit()
+
+    return "Success!"
