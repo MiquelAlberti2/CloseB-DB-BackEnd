@@ -1,0 +1,117 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Orders Blueprint",
+    "dateExported": "2023-04-20T15:24:59.699Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "a9cef137-1333-4225-9980-5764b6bdfd06",
+            "colId": "d9878bc0-e800-4147-8955-e1d415423dd0",
+            "containerId": "",
+            "name": "get all orders",
+            "url": "localhost:8001/o/orders",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-04-20T14:57:59.700Z",
+            "modified": "2023-04-20T14:58:58.338Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "53983599-a137-4743-9802-317ae3e7dcbf",
+            "colId": "d9878bc0-e800-4147-8955-e1d415423dd0",
+            "containerId": "",
+            "name": "get all returns",
+            "url": "localhost:8001/o/returns",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-04-20T15:07:09.928Z",
+            "modified": "2023-04-20T15:07:21.527Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5ad13bc4-0ac9-4421-b4f8-1fcc5ce51477",
+            "colId": "d9878bc0-e800-4147-8955-e1d415423dd0",
+            "containerId": "",
+            "name": "get all carrierIDs as label value",
+            "url": "localhost:8001/o/carriersID",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-04-20T15:08:23.014Z",
+            "modified": "2023-04-20T15:08:51.624Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "63b553d1-b649-412d-b101-2cf38c181e6b",
+            "colId": "d9878bc0-e800-4147-8955-e1d415423dd0",
+            "containerId": "",
+            "name": "get all order shipments",
+            "url": "localhost:8001/o/shipments/orders",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2023-04-20T15:09:17.496Z",
+            "modified": "2023-04-20T15:09:43.597Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b21ac2a8-b124-46dd-b2f4-683f7f4898a3",
+            "colId": "d9878bc0-e800-4147-8955-e1d415423dd0",
+            "containerId": "",
+            "name": "get all return shipments",
+            "url": "localhost:8001/o/shipments/returns",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2023-04-20T15:09:59.333Z",
+            "modified": "2023-04-20T15:10:12.298Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d7953b84-5d56-451c-a1f9-7eca4e031230",
+            "colId": "d9878bc0-e800-4147-8955-e1d415423dd0",
+            "containerId": "",
+            "name": "create shipment",
+            "url": "localhost:8001/o/shipments",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2023-04-20T15:10:52.411Z",
+            "modified": "2023-04-20T15:13:09.730Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"CarrierID\": 2,\r\n  \"ShippingCost\": \"14\",\r\n  \"OrderID\": 1\r\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "0d07f3de-592b-4517-8a28-029999cc4baa",
+            "colId": "d9878bc0-e800-4147-8955-e1d415423dd0",
+            "containerId": "",
+            "name": "get price of shipment for an order",
+            "url": "localhost:8001/o/shipment/price",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2023-04-20T15:14:17.840Z",
+            "modified": "2023-04-20T15:15:55.237Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"CarrierID\": 2,\r\n  \"CustomerID\": 1\r\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
