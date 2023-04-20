@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "OrdersBlueprintTestsPage2",
-    "dateExported": "2023-04-20T20:30:19.002Z",
+    "dateExported": "2023-04-20T22:44:50.931Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -76,6 +76,20 @@
             "tests": []
         },
         {
+            "_id": "9b73f028-6cbe-4e9d-b2c8-386c298b2d9d",
+            "colId": "ea944bc8-3a51-4a09-824d-7f870e5db754",
+            "containerId": "",
+            "name": "get_amount_spent3",
+            "url": "localhost:8001/o/orders/amountSpent/12",
+            "method": "GET",
+            "sortNum": 47500,
+            "created": "2023-04-20T22:26:39.117Z",
+            "modified": "2023-04-20T22:26:52.246Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
             "_id": "c3e5b76d-7b16-440c-90b4-f22d4e5acbc8",
             "colId": "ea944bc8-3a51-4a09-824d-7f870e5db754",
             "containerId": "",
@@ -117,12 +131,50 @@
             "method": "PUT",
             "sortNum": 70000,
             "created": "2023-04-20T20:26:54.396Z",
-            "modified": "2023-04-20T20:27:56.876Z",
+            "modified": "2023-04-20T22:29:30.881Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"Name\": \"Hasblow\",\n  \"Email\": \"megatron@cybertron.com\",\n  \"City\": \"Kaon\",\n  \"ZIP\": \"11111\",\n  \"State\": \"Blaster City String\",\n  \"Street\": \"13 Gladiator Pits\"\n}  \n",
+                "raw": "{\n  \"Name\": \"Hasblow\",\n  \"Email\": \"megatron@cybertron.com\",\n  \"City\": \"Iacon\",\n  \"ZIP\": \"1111\",\n  \"State\": \"Blaster City Strip\",\n  \"Street\": \"13 Gladiator City\"\n}  ",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "bd0d53e2-7604-4ff4-b498-c84213fc1237",
+            "colId": "ea944bc8-3a51-4a09-824d-7f870e5db754",
+            "containerId": "",
+            "name": "update_brand_info3",
+            "url": "localhost:8001/o/brands/3",
+            "method": "PUT",
+            "sortNum": 80000,
+            "created": "2023-04-20T22:27:55.809Z",
+            "modified": "2023-04-20T22:30:32.755Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"Name\": \"Hasdont\",\n  \"Email\": \"thundertron@cybertron.com\",\n  \"City\": \"Archon\",\n  \"ZIP\": \"33333\",\n  \"State\": \"Space\",\n  \"Street\": \"Space\"\n}  ",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "62b20af8-2cd0-4d2a-b55e-0df01eda8240",
+            "colId": "ea944bc8-3a51-4a09-824d-7f870e5db754",
+            "containerId": "",
+            "name": "update_brand_info4",
+            "url": "localhost:8001/o/brands/3",
+            "method": "PUT",
+            "sortNum": 90000,
+            "created": "2023-04-20T22:30:56.380Z",
+            "modified": "2023-04-20T22:31:20.749Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"Name\": \"Haswont\",\n  \"Email\": \"lockdown@cybertron.com\",\n  \"City\": \"Deaths Head\",\n  \"ZIP\": \"77777\",\n  \"State\": \"Space\",\n  \"Street\": \"Space\"\n}  ",
                 "form": []
             },
             "tests": []
