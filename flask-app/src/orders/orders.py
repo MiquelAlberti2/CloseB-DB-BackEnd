@@ -200,34 +200,23 @@ def get_shipment_price():
 
     return the_response
 
+# Delete an order
+@orders.route('/orders/<order_ID>', methods=['DELETE'])
+def delete_order(order_ID):
 
+    # look for the result in the database
+    query  = "DELETE FROM Orders "
+    query += "WHERE OrderID = "+str(order_ID)
+    
+    # to debug in Docker (to show it in the Docker terminal)
+    current_app.logger.info(query)
 
-
-# ---------------------------------------------------------------------
-@orders.route('/returnDetail', methods=['GET'])
-def get_order_returns_detail():
-    # get a cursor object from the database
+    # insert data into the database
     cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit() # to apply the changes to the database
 
-    # use cursor to query the database for a list of products
-    cursor.execute('SELECT OrderID, CustomerID, Date, Price FROM Orders WHERE isReturn = True')
-
-    # grab the column headers from the returned data
-    column_headers = [x[0] for x in cursor.description]
-
-    # create an empty dictionary object to use in 
-    # putting column headers together with data
-    json_data = []
-
-    # fetch all the data from the cursor
-    theData = cursor.fetchall()
-
-    # for each of the rows, zip the data elements together with
-    # the column headers. 
-    for row in theData:
-        json_data.append(dict(zip(column_headers, row)))
-
-    return jsonify(json_data)
+    return 'Success!'
 
 
 # Get information about Customers - PAGE 2
