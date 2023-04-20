@@ -127,8 +127,16 @@ def update_product(ProductID):
     cursor = db.get_db().cursor()
 
     # use cursor to query the database for a list of products
-    cursor.execute('UPDATE Products SET Price = '+str(price)+ ' Name = '+str(name)+ ' CategoryTitle = '+str(categoryTitle)+ '  Description = '+str(description)+ ' WHERE ProductID = '+str(ProductID))
+    query = "UPDATE Products SET Price = "+str(price)
+    query += ", Name = '"+str(name)
+    query += "', Category_Title = '"+str(categoryTitle)
+    query += "',  Description = '"+str(description)
+    query += "' WHERE ProductID = "+str(ProductID)
 
+    # to debug in Docker (to show it in the Docker terminal)
+    current_app.logger.info(query)
+    
+    cursor.execute(query)
     db.get_db().commit()
 
     return "Success!"
