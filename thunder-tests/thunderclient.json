@@ -26,5 +26,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "f479927c-7d8c-40c4-9674-a9910242cb9e",
+    "colId": "ea944bc8-3a51-4a09-824d-7f870e5db754",
+    "containerId": "",
+    "name": "get_customers",
+    "url": "localhost:8001/o/customers",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-04-19T17:35:42.788Z",
+    "modified": "2023-04-19T17:36:01.328Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
