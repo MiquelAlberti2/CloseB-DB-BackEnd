@@ -1,0 +1,65 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Customer_Info_Tests",
+    "dateExported": "2023-04-20T17:25:39.023Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "f479927c-7d8c-40c4-9674-a9910242cb9e",
+            "colId": "ea944bc8-3a51-4a09-824d-7f870e5db754",
+            "containerId": "",
+            "name": "get_customers",
+            "url": "localhost:8001/o/customers",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-04-19T17:35:42.788Z",
+            "modified": "2023-04-19T17:36:01.328Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e1c24d52-6db9-48e4-85f5-2d5f7bbe75f3",
+            "colId": "ea944bc8-3a51-4a09-824d-7f870e5db754",
+            "containerId": "",
+            "name": "get_no_customer_orders",
+            "url": "localhost:8001/o/orders/1/1",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-04-20T16:29:33.378Z",
+            "modified": "2023-04-20T16:44:41.704Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "a59f739d-8173-40a4-9312-447929e7d612",
+            "colId": "ea944bc8-3a51-4a09-824d-7f870e5db754",
+            "containerId": "",
+            "name": "get_no_customer_orders2",
+            "url": "localhost:8001/o/orders/2/0",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-04-20T16:51:38.712Z",
+            "modified": "2023-04-20T16:51:54.231Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "9c769a74-adcd-4fa9-bc98-098ba407bf73",
+            "colId": "ea944bc8-3a51-4a09-824d-7f870e5db754",
+            "containerId": "",
+            "name": "get_amount_spent",
+            "url": "localhost:8001/o/orders/amountSpent/4",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-04-20T17:24:32.648Z",
+            "modified": "2023-04-20T17:25:14.493Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
