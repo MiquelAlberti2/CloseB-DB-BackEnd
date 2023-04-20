@@ -263,7 +263,7 @@ def get_no_customer_orders(CustomerID, isReturn):
     # isReturn = the_data['isReturn']
 
     # look for the result in the database
-    query  = "SELECT Count(OrderID)"
+    query  = "SELECT Count(OrderID) as count"
     query += " FROM Customers JOIN Orders O on Customers.CustomerID = O.CustomerID"
     query += " WHERE O.CustomerID =" + str(CustomerID)
     query += " AND isReturn = "+ str(isReturn)
@@ -299,7 +299,7 @@ def get_amount_spent(CustomerID):
 
 
     # look for the result in the database
-    query  = "SELECT SUM(Price)"
+    query  = "SELECT SUM(Price) as price"
     query += " FROM Customers JOIN Orders O on Customers.CustomerID = O.CustomerID"
     query += " WHERE O.CustomerID =" + str(CustomerID)
     query += " AND isReturn = false"
