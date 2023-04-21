@@ -299,7 +299,7 @@ def get_amount_spent(CustomerID):
 
 
     # look for the result in the database
-    query  = "SELECT SUM(Price) as price"
+    query  = "SELECT SUM(Price) as sum"
     query += " FROM Customers JOIN Orders O on Customers.CustomerID = O.CustomerID"
     query += " WHERE O.CustomerID =" + str(CustomerID)
     query += " AND isReturn = false"
