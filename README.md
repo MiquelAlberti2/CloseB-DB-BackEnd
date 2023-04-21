@@ -34,6 +34,9 @@ Install Docker Desktop and follow these steps:
 
 After that, you should be able to run AppSmith locally by typing the URL http://localhost:8080/. Then, you can import the app from the [CloseB-DB-FrontEnd](https://github.com/MiquelAlberti2/CloseB-DB-FrontEnd) repo.
 
+## Demo Video
+
+Take a look at the video to see how the prototype works: [Demo](https://youtu.be/1YM_UwnCudE)
 
 
 
