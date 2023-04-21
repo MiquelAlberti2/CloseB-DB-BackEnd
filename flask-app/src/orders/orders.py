@@ -291,8 +291,8 @@ def get_no_customer_orders(CustomerID, isReturn):
 
     return jsonify(json_data)
 
-@orders.route('/orders/amountSpent/<CustomerID>/', methods=['GET'])
-def get_amount_spent(CustomerID):
+@orders.route('/orders/amountSpent/<CustomerID>/<isReturn>', methods=['GET'])
+def get_amount_spent(CustomerID, isReturn):
 
     # get a cursor object from the database
     cursor = db.get_db().cursor()
@@ -302,7 +302,7 @@ def get_amount_spent(CustomerID):
     query  = "SELECT SUM(Price) as sum"
     query += " FROM Customers JOIN Orders O on Customers.CustomerID = O.CustomerID"
     query += " WHERE O.CustomerID =" + str(CustomerID)
-    query += " AND isReturn = false"
+    query += " AND isReturn = "+ str(isReturn)
 
     cursor.execute(query)
     
